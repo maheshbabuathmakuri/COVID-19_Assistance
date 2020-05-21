@@ -1,0 +1,41 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout">
+	<Dialog titleAlignment="Center" contentWidth="50%" class="zstatetitle" id="idDistricts">
+		<l:Grid defaultSpan="L3 M6 S12">
+			<l:content>
+				<GenericTag text="Confirmed: " design="StatusIconHidden" status="Error">
+					<ObjectNumber state="Error" emphasized="true" number="{confirmed}"/>
+				</GenericTag>
+				<GenericTag text="Active: " design="StatusIconHidden" status="Warning">
+					<ObjectNumber state="Warning" emphasized="true" number="{active}"/>
+				</GenericTag>
+				<GenericTag text="Recovered: " design="StatusIconHidden" status="Success">
+					<ObjectNumber state="Success" emphasized="true" number="{recovered}"/>
+				</GenericTag>
+				<GenericTag text="Deceased: " design="StatusIconHidden" status="None">
+					<ObjectNumber state="None" emphasized="true" number="{deaths}"/>
+				</GenericTag>
+			</l:content>
+		</l:Grid>
+		<Table inset="false" items="{districts}">
+			<columns>
+				<Column>
+					<Text text="Districts"/>
+				</Column>
+				<Column>
+					<Text text="Confirmed"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{district}" titleActive='false'/>
+						<Text text="{confirmed}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<endButton>
+			<Button text="Close" press="onDistrictDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

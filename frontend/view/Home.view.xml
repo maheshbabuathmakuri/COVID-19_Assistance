@@ -1,0 +1,126 @@
+<mvc:View controllerName="frontend.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"  xmlns:core = "sap.ui.core"
+	xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:vbm="sap.ui.vbm" >
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" showHeader="false" titleAlignment="Center" title="Covid-19 India Reports">
+					<content>
+						<Toolbar>
+							<Title text="Crowd Sourced Patient Database" visible="{device>/isNoTouch}" class="zdatasourcetitle" titleStyle="H6" level="H6"/>
+							<ToolbarSpacer/>
+							<Title class="zTitle" titleStyle="H2" level="H2" text="Covid-19 India Reports">
+								<layoutData>
+									<ToolbarLayoutData shrinkable="false"/>
+								</layoutData>
+							</Title>
+							<ToolbarSpacer/>
+							<HBox>
+								<Label class="zlastupdated sapUiTinyMarginEnd" text="Last Updated*: " visible="{device>/isNoTouch}"/>
+								<Label id="idLastUpdated" visible="{device>/isNoTouch}"/>
+							</HBox>
+						</Toolbar>
+						<!--<FlexBox alignItems="Center">-->
+						<!--	<items>-->
+						<l:Grid hSpacing="2" defaultSpan="L3 M12 S6">
+							<l:content>
+								<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop ztilewh sapUiTinyMarginBottom ztileconfirmed" headerImage='sap-icon://alert' header="Confirmed Cases" press="press">
+									<TileContent>
+										<!--<NumericContent scale="[+ {/deltaCountriesData/confirmeddelta} ]" value="{/data/confirmed}" valueColor="Error" indicator="Up"-->
+										<!--	withMargin="false"/>-->
+										<NumericContent scale="[+ {/data/deltaconfirmed} ]" truncateValueTo='10' value="{/data/confirmed}" valueColor="Error" indicator="Up"
+											withMargin="false"/>
+									</TileContent>
+									<!--<layoutData>-->
+									<!--	<FlexItemData growFactor="1"/>-->
+									<!--</layoutData>-->
+								</GenericTile>
+								<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop ztilewh sapUiTinyMarginBottom ztileactive" headerImage='sap-icon://message-warning' header="Active Cases" press="press">
+									<TileContent>
+										<NumericContent value="{/data/active}" valueColor="Critical" truncateValueTo='10' withMargin="false" />
+									</TileContent>
+									<!--<layoutData>-->
+									<!--	<FlexItemData growFactor="1"/>-->
+									<!--</layoutData>-->
+								</GenericTile>
+								<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop ztilewh sapUiTinyMarginBottom ztilerecovered" headerImage='sap-icon://activate' header="Recovered Cases" press="press">
+									<TileContent>
+										<!--<NumericContent scale="[+{/deltaCountriesData/recovereddelta}]" value="{/data/recovered}" valueColor="Good" indicator="Up"-->
+										<!--	withMargin="false"/>-->
+										<NumericContent scale="[+{/data/deltarecovered}]" value="{/data/recovered}" truncateValueTo='10' valueColor="Good" indicator="Up"
+											withMargin="false"/>
+									</TileContent>
+									<!--<layoutData>-->
+									<!--	<FlexItemData growFactor="1"/>-->
+									<!--</layoutData>-->
+								</GenericTile>
+								<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop ztilewh sapUiTinyMarginBottom ztiledeath" headerImage='sap-icon://status-error' header="Deceased Cases" press="press">
+									<TileContent>
+										<!--<NumericContent scale="[+{/deltaCountriesData/deceaseddelta}]" value="{/data/deaths}" valueColor="Neutral" indicator="Up" withMargin="false"/>-->
+										<NumericContent scale="[+{/data/deltadeaths}]" truncateValueTo='10' value="{/data/deaths}" valueColor="Neutral" indicator="Up" withMargin="false"/>
+									</TileContent>
+									<!--<layoutData>-->
+									<!--	<FlexItemData growFactor="1"/>-->
+									<!--</layoutData>-->
+								</GenericTile>
+							</l:content>
+						</l:Grid>
+						<!--	</items>-->
+						<!--</FlexBox>-->
+						<MessageStrip text="Scroll down to see the reports in Map View" showIcon="true" showCloseButton="true" class="sapUiSmallMargin"></MessageStrip>
+						<Panel>
+						<Table inset="false" class="zstates" items="{/totalData/}">
+							<columns>
+								<Column>
+									<Text text="Name of State / UT"/>
+								</Column>
+								<Column>
+									<Text text="Confirmed*"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Active"/>
+								</Column>
+								<Column minScreenWidth="Tablet" demandPopin="true">
+									<Text text="Recovered"/>
+								</Column>
+								<Column >
+									<Text text="Death"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Active" press="onPressState">
+									<cells>
+										<ObjectIdentifier title="{state}" titleActive='false'/>
+										<HBox>
+											<ObjectNumber number="{confirmed}" state="None" />
+											<Text class="ztodaysconfirmedcount" text="[+ {deltaconfirmed}]" visible="{= ${deltaconfirmed} === '0' ? false : true }"/>
+										</HBox>
+										<ObjectNumber number="{active}" state="Warning"/>
+										<ObjectNumber number="{recovered}" state="Success"/>
+										<HBox>
+											<Text text="{deaths}"/>
+											<Text class="ztodaysdeathcount" text="[+ {deltadeaths}]" visible="{= ${deltadeaths} === '0' ? false : true }"/>
+										</HBox>
+										
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						</Panel>
+						<core:HTML id="idHTMLContent"/>
+						<Panel expandable="true" headerText="Reports in Map view" width="auto" height="80%">
+							<vbm:AnalyticMap id="vbi" width="100%" xmlns:l="sap.ui.layout" height="100%" initialPosition="78.962883;20.5936832;0" initialZoom="4"
+								regionClick="onRegionClick" regionContextMenu="onRegionContextMenu">
+								<vbm:vos>
+									<vbm:Spots items="{SpotModel>/}" click="onClickItem" contextMenu="onContextMenuItem">
+										<vbm:Spot position="{SpotModel>pos}" tooltip="{SpotModel>tooltip}" type="{SpotModel>type}" text="{SpotModel>text}" click="onClickSpot"
+											contextMenu="onContextMenuSpot"/>
+									</vbm:Spots>
+								</vbm:vos>
+							</vbm:AnalyticMap>
+						</Panel>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
