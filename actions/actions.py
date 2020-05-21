@@ -37,6 +37,21 @@ from dateutil.parser import parse
 
 MONTHS = {"01": "January", "02": "February", "03": "March", "04": "April", "05": "May", "06": "June", "07": "July"}
 
+
+class ActionHelloWorld(Action):
+
+    def name(self) -> Text:
+        return "action_hello_world"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        dispatcher.utter_message(text="Hi, Iam Mahi COVID-19 Assistant Bot. I can help you with the information on Corona.")
+
+        return []
+
+
 class SearchCoronaCasesHistory(Action):
     """This action class finds and displays the search_coronacases entity slot."""
 
@@ -119,7 +134,7 @@ class SearchCoronaCasesHistory(Action):
             search_datedt = datetime(year, search_month, search_date)
             
             if (search_datedt >= todaydt) or (search_datedt < hist_date):
-                response = "Data is not available. Kindly refrain the search querry."
+                response = "Data is not available. Kindly rephrase  the search querry."
             else:
                 for i in history_data:
                     print(i["date"])

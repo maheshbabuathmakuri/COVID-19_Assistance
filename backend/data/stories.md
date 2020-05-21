@@ -113,3 +113,12 @@
 ## bot challenge
 * bot_challenge
   - utter_iamabot
+
+## nonsense
+* nonsense
+  - utter_nonsense
+
+## age
+* age
+  - utter_age
+

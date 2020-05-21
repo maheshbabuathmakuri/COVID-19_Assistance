@@ -143,13 +143,16 @@ $(document).ready(function () {
 	//enable this if u have configured the bot to start the conversation. 
 	// showBotTyping();
 	// $("#userInput").prop('disabled', true);
-
+    
+    $(".profile_div").toggle();
+	$(".widget").toggle();
+    
 	//global variables
 	action_name = "action_greet_user";
-	user_id = "mahesh";
+	user_id = "Mahesh";
 
 	//if you want the bot to start the conversation
-	// action_trigger();
+	action_trigger();
 
 			// ========================== restart conversation ========================
 function restartConversation() {
@@ -172,17 +175,20 @@ function action_trigger() {
 	// send an event to the bot, so that bot can start the conversation by greeting the user
 var url = document.location.protocol + "//" + document.location.hostname;
 	$.ajax({
-		url: url + "/rasa/conversations/${user_id}/execute",
+    	url: url + "/rasa/webhooks/rest/webhook",
+		//url: url + "/rasa/conversations/${user_id}/execute",
 		//url: url + ":5005/conversations/${user_id}/execute",
 		type: "POST",
 		contentType: "application/json",
-		data: JSON.stringify({ "name": action_name, "policy": "MappingPolicy", "confidence": "0.98" }),
+		data: JSON.stringify({ message: "Hi", sender: user_id }),
+		//data: JSON.stringify({ "name": action_name, "policy": "MappingPolicy", "confidence": "0.98" }),
 		success: function (botResponse, status) {
 			console.log("Response from Rasa: ", botResponse, "\nStatus: ", status);
 
-			if (botResponse.hasOwnProperty("messages")) {
-				setBotResponse(botResponse.messages);
-			}
+			//if (botResponse.hasOwnProperty("messages")) {
+				//setBotResponse(botResponse.messages);
+			//}
+			setBotResponse(botResponse);
 			$("#userInput").prop('disabled', false);
 		},
 		error: function (xhr, textStatus, errorThrown) {
@@ -191,6 +197,8 @@ var url = document.location.protocol + "//" + document.location.hostname;
 			setBotResponse("");
 			console.log("Error from bot end: ", textStatus);
 			$("#userInput").prop('disabled', false);
+			
+			
 		}
 	});
 }
@@ -317,7 +325,7 @@ function setBotResponse(response) {
 		hideBotTyping();
 		if (response.length < 1) {
 			//if there is no response from Rasa, send  fallback message to the user
-			var fallbackMsg = "I am facing some issues, please try again later!!!";
+			var fallbackMsg = "Currently, I don't have a data for it, please try again later!!!";
 
 			var BotResponse = '<img class="botAvatar" src="/img/botAvatar2.png"/><p class="botMsg">' + fallbackMsg + '</p><div class="clearfix"></div>';
 

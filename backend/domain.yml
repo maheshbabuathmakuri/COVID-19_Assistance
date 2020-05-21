@@ -2,6 +2,8 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- age
+- nonsense
 - greet
 - goodbye
 - affirm
@@ -48,8 +50,10 @@ slots:
   time:
     type: unfeaturized
 responses:
+  utter_age:
+  - text: "I dont know my birth date. But iam created by mahesh."
   utter_greet:
-  - text: Hi, How are you?
+  - text: "Hi, Iam Mahi COVID-19 Assistant Bot. I can help you with the information on Corona."
   utter_cheer_up:
   - text: 'Here is something to cheer you up:'
     image: https://i.imgur.com/nGF1K8f.jpg
@@ -59,8 +63,10 @@ responses:
   - text: Great, carry on!
   utter_goodbye:
   - text: Bye
+  utter_nonsense:
+  - text: "Hi, Iam bot. Pleaese maintain some decency with me."
   utter_iamabot:
-  - text: I am a Mahi bot, Created by Mahesh.
+  - text: "I am a Mahi COVID19-Assistant bot, Created by Mahesh."
   utter_coronavirus:
   - text: Coronaviruses are a large family of viruses which may cause illness in animals
       or humans.  In humans, several coronaviruses are known to cause respiratory
@@ -382,6 +388,8 @@ responses:
       \ on the ways COVID-19 is spread and will continue to share new findings on\
       \ this topic."
 actions:
+- utter_age
+- utter_nonsense
 - utter_greet
 - utter_cheer_up
 - utter_did_that_help

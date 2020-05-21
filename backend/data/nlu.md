@@ -344,8 +344,27 @@
 - extremely sad
 - so sad
 
+## intent:nonsense
+- fuck
+- sexy
+- porn
+- love you
+- do you love me
+- do you smoke?
+- do you drink?
+
+## intent:age
+- How old are you?
+- what is your age?
+- when did you born
+- when will you die?
+
 ## intent:bot_challenge
 - are you a bot?
 - are you a human?
 - am I talking to a bot?
 - am I talking to a human?
+- who are you?
+- what is your name.
+- what do you do.
+- where are you from?
