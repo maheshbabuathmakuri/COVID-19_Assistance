@@ -2,6 +2,21 @@
 COVID-19 Assistance<br>
 <img src='COVID19_Assistant.gif'>
 
+<b>Below are the features of the application:</b>
+  * The bot can assist most of the FAQ's answered by WHO.
+                (such as what is corona virus, what is self-isolation, can corona spreads from pets etc…)                         
+    * It provides the police helpline contacts in states.
+                (Police helplines in telangana<state name>)
+    * It can assist testing lab centers in states
+                (Please show testing labs in andhra pradesh)
+    * It helps you with the details of COVID-19 treatment hospitals in a state.
+                (corona virus treatment hospitals in telangana)
+    * It assists senior citizen helpline numbers.
+                (Can you help for senior citizen helpline in kerala)
+    * It gives the history of number of confirmed/recovered/death cases on daily incremental wise and total cases in India..
+                (recovered cases on 15th may, total recovered cases on 14th may)
+    * Tt gives the number of active/recovered/deaths/confirmed cases in state-wise.
+                (Please tell me total active cases in andhra pradesh)
 
 # Rasa Deployment
 Deploying Rasa Bot over Google Cloud Platform using Docker.
