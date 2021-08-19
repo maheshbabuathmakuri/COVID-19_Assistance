@@ -1,9 +1,6 @@
 # COVID-19_Assistance
-COVID-19 Assistance<br>
+<b>COVID-19 Assistance chat bot by using Machine learning/Artificial intelligence, dockerized the application and  deployed into Google Cloud Platform(GCP).</b><br>
 <img src='COVID19_Assistant.gif'>
-
-
-<b>COVID-19 Assistance chat bot by using Machine learning/Artificial intelligence, dockerized the application and  deployed into Google Cloud Platform(GCP).</b>
 <br>
 <b>Below are the features of the application:</b>
   * The bot can assist most of the FAQ's answered by WHO.
