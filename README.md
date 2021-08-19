@@ -1,5 +1,8 @@
 # COVID-19_Assistance
 COVID-19 Assistance
+<img src='COVID19_Assistant.gif'>
+
+
 # Rasa Deployment
 Deploying Rasa Bot over Google Cloud Platform using Docker.
 
