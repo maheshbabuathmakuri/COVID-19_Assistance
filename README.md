@@ -2,6 +2,9 @@
 COVID-19 Assistance<br>
 <img src='COVID19_Assistant.gif'>
 
+
+<b>COVID-19 Assistance chat bot by using Machine learning/Artificial intelligence, dockerized the application and  deployed into Google Cloud Platform(GCP).</b>
+<br>
 <b>Below are the features of the application:</b>
   * The bot can assist most of the FAQ's answered by WHO.
                 (such as what is corona virus, what is self-isolation, can corona spreads from pets etc…)                         
@@ -18,6 +21,11 @@ COVID-19 Assistance<br>
   * It gives the number of active/recovered/deaths/confirmed cases in state-wise.
                 (Please tell me total active cases in andhra pradesh)
 
+ <br>
+ <h5>The application looks like below.</h5>
+ <b>The UI is created using UI5(Javascript framework). Chatbot created using RASA</b>
+ <img src='image1.png'>  <img src='image2.png'>  <img src='image3.png'>
+ 
 # Rasa Deployment
 Deploying Rasa Bot over Google Cloud Platform using Docker.
 
